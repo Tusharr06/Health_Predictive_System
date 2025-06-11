@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPredict - AI Disease Prediction System</title>
+    <link rel="icon" href="https://img.icons8.com/color/32/000000/caduceus.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>MediPredict</span>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#predictor" class="nav-link" data-section="predictor">Predictor</a>
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            AI-Powered <span class="gradient-text">Disease Prediction</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Get instant health insights based on your symptoms using advanced machine learning technology. 
+                            Fast, accurate, and reliable preliminary health assessment.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="showSection('predictor')">
+                                <i class="fas fa-stethoscope"></i>
+                                Start Prediction
+                            </button>
+                            <button class="btn btn-secondary" onclick="showSection('about')">
+                                <i class="fas fa-info-circle"></i>
+                                Learn More
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">41</span>
+                                <span class="stat-label">Diseases Covered</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">132</span>
+                                <span class="stat-label">Symptoms Analyzed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Accuracy Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="floating-card">
+                            <i class="fas fa-brain"></i>
+                            <h3>AI Analysis</h3>
+                            <p>Advanced machine learning algorithms</p>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Secure & Private</h3>
+                            <p>Your health data stays protected</p>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>Instant Results</h3>
+                            <p>Get predictions in seconds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Predictor Section -->
+        <section id="predictor" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Disease Predictor</h2>
+                    <p class="section-subtitle">Select your symptoms to get an AI-powered health assessment</p>
+                </div>
+
+                <div class="predictor-container">
+                    <div class="symptoms-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-list-check"></i> Select Your Symptoms</h3>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="symptom-search" placeholder="Search symptoms...">
+                            </div>
+                        </div>
+                        
+                        <div class="selected-symptoms">
+                            <div class="selected-header">
+                                <span>Selected Symptoms (<span id="selected-count">0</span>)</span>
+                                <button class="btn-clear" id="clear-symptoms">Clear All</button>
+                            </div>
+                            <div class="selected-list" id="selected-symptoms"></div>
+                        </div>
+
+                        <div class="symptoms-grid" id="symptoms-grid">
+                            <!-- Symptoms will be populated by JavaScript -->
+                        </div>
+
+                        <div class="prediction-actions">
+                            <button class="btn btn-primary btn-large" id="predict-btn" disabled>
+                                <i class="fas fa-magic"></i>
+                                Predict Disease
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="results-panel" id="results-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-chart-line"></i> Prediction Results</h3>
+                        </div>
+                        <div class="results-content" id="results-content">
+                            <div class="no-results">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>Select symptoms and click "Predict Disease" to see results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About MediPredict</h2>
+                    <p class="section-subtitle">Advanced AI technology for preliminary health assessment</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <div class="card-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>Machine Learning</h3>
+                            <p>Our system uses advanced machine learning algorithms trained on extensive medical datasets to provide accurate symptom analysis and disease prediction.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="card-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>Comprehensive Database</h3>
+                            <p>Built on a foundation of medical knowledge covering 41 diseases and 132 symptoms, providing comprehensive health insights.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Medical Guidance</h3>
+                            <p>Get detailed recommendations including precautions, medications, dietary advice, and lifestyle recommendations for each condition.</p>
+                        </div>
+                    </div>
+
+                    <div class="how-it-works">
+                        <h3>How It Works</h3>
+                        <div class="steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Select Symptoms</h4>
+                                    <p>Choose from our comprehensive list of symptoms that match your current condition</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>AI Analysis</h4>
+                                    <p>Our machine learning model analyzes symptom patterns to predict possible conditions</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Get Results</h4>
+                                    <p>Receive detailed health recommendations and guidance for your predicted condition</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-card">
+                        <div class="disclaimer-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="disclaimer-content">
+                            <h4>Medical Disclaimer</h4>
+                            <p>This tool is for informational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for proper diagnosis and treatment. In case of emergency, contact your local emergency services immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contact & Support</h2>
+                    <p class="section-subtitle">Get help and learn more about our platform</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3>FAQ</h3>
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                    <h4>How accurate is the prediction?</h4>
+                                    <p>Our system achieves approximately 95% accuracy based on training data, but should be used as a preliminary assessment tool only.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>Is my data secure?</h4>
+                                    <p>Yes, all symptom data is processed locally and not stored on our servers, ensuring complete privacy.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>Can this replace a doctor visit?</h4>
+                                    <p>No, this tool is for informational purposes only. Always consult healthcare professionals for medical advice.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="card-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Technical Details</h3>
+                            <div class="tech-details">
+                                <div class="tech-item">
+                                    <span class="tech-label">Algorithm:</span>
+                                    <span class="tech-value">Random Forest Classifier</span>
+                                </div>
+                                <div class="tech-item">
+                                    <span class="tech-label">Training Data:</span>
+                                    <span class="tech-value">Medical symptom datasets</span>
+                                </div>
+                                <div class="tech-item">
+                                    <span class="tech-label">Diseases Covered:</span>
+                                    <span class="tech-value">41 common conditions</span>
+                                </div>
+                                <div class="tech-item">
+                                    <span class="tech-label">Symptoms Analyzed:</span>
+                                    <span class="tech-value">132 different symptoms</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Analyzing your symptoms...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./src/js/main.js"></script>
+</body>
+</html>
